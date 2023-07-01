@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{8D2B57D1-73F6-4BD9-9226-5441F04EE5E4}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.goodlife PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="goodlife/goodlife.csproj">
+    <Files>
+      <File FileName="goodlife/goodlife.csproj" Line="29" Column="29" />
+      <File FileName="goodlife/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="goodlife/ClientApp/src/App.js" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="goodlife" expanded="True">
+            <Node name="goodlife" expanded="True">
+              <Node name="ClientApp" expanded="True">
+                <Node name="src" expanded="True">
+                  <Node name="App.js" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>
