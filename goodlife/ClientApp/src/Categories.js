@@ -20,7 +20,8 @@ export function Categories({setPage, selected, setSelected}) {
     const [data, setData] = useState({ categories: [], loading: true })
     
     const populateWeatherData = async () => {
-        const response = await fetch('weatherforecast/categories');
+        //const response = await fetch('weatherforecast/categories');
+        const response = await fetch('goodlife/categories');
         const data = await response.json();
         setData({ categories: data, loading: false });
     }

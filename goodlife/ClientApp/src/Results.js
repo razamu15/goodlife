@@ -21,7 +21,7 @@ export function Results({ setPage, quizData }) {
   const [data, setData] = useState({ classes: [], loading: true })
 
   const populateWeatherData = async () => {
-    const response = await fetch('weatherforecast/classes');
+    const response = await fetch('goodlife/classes');
     const data = await response.json();
     console.log(data)
     setData({ classes: data, loading: false });
@@ -120,11 +120,9 @@ export function Results({ setPage, quizData }) {
                           </div>
                         }
 
-                        {modalClass.requiresEquipment &&
-                          <div className="inline-flex items-center rounded-md bg-red-50 px-2.5 py-1.5 text-sm font-medium text-red-600 ring-1 ring-inset ring-red-500/10">
-                            <FireIcon className='h-4 mr-2 text-red' /> <span>{modalClass.intensity} Intensity</span>
-                          </div>
-                        }
+                        <div className="inline-flex items-center rounded-md bg-red-50 px-2.5 py-1.5 text-sm font-medium text-red-600 ring-1 ring-inset ring-red-500/10">
+                        <FireIcon className='h-4 mr-2 text-red' /> <span>{modalClass.intensity} Intensity</span>
+                        </div>                        
                       </div>
 
 
