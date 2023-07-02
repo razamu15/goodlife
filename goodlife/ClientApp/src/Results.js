@@ -1,8 +1,21 @@
 import { useState, useEffect, Fragment } from 'react'
 import { ArrowPathIcon, ArrowRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {FireIcon } from '@heroicons/react/24/solid'
 import { Loading } from './Loading';
 import { Dialog, Transition } from '@headlessui/react'
 
+const DumbellIcon = () => {
+  return (
+    <svg className='h-4 mr-2 text-red-500' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512" fill='currentColor'>
+      <path d="M96 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32V224v64V448c0 17.7-14.3 
+32-32 32H128c-17.7 0-32-14.3-32-32V384H64c-17.7 0-32-14.3-32-32V288c-17.7 
+0-32-14.3-32-32s14.3-32 32-32V160c0-17.7 14.3-32 32-32H96V64zm448 0v64h32c17.7 0 32 14.3 
+32 32v64c17.7 0 32 14.3 32 32s-14.3 32-32 32v64c0 17.7-14.3 32-32 32H544v64c0 17.7-14.3 
+32-32 32H480c-17.7 0-32-14.3-32-32V288 224 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 
+32zM416 224v64H224V224H416z"/>
+    </svg>
+  )
+}
 export function Results({ setPage, quizData }) {
   const [modalClass, setModalClass] = useState(null)
   const [data, setData] = useState({ classes: [], loading: true })
@@ -78,7 +91,7 @@ export function Results({ setPage, quizData }) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white p-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white p-4 text-left shadow-xl transition-all sm:my-8 sm:w-full max-w-xl sm:p-6">
                   <div className="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
                     <button
                       type="button"
@@ -90,25 +103,45 @@ export function Results({ setPage, quizData }) {
                     </button>
                   </div>
 
-                  <div>
-                    <div className="mt-3 text-center sm:mt-5">
-                      <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                        Payment successful
-                      </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
-                        </p>
+                  {modalClass && <div>
+                    <div className="mt-3">
+                      <h1 className="text-3xl font-semibold leading-6 text-gray-900 pb-3">
+                        {modalClass.className}
+                      </h1>
+                      <div className="my-3 flex gap-4">
+                        {modalClass.category.map((cat) =>
+                          <span className="inline-flex items-center rounded-md bg-red-50 px-2.5 py-1.5 text-sm font-medium text-red-600 ring-1 ring-inset ring-red-500/10">
+                            {cat}
+                          </span>)}
+
+                        {modalClass.requiresEquipment &&
+                          <div className="inline-flex items-center rounded-md bg-red-50 px-2.5 py-1.5 text-sm font-medium text-red-600 ring-1 ring-inset ring-red-500/10">
+                            <DumbellIcon /> <span>Requires Equipment</span>
+                          </div>
+                        }
+
+                        {modalClass.requiresEquipment &&
+                          <div className="inline-flex items-center rounded-md bg-red-50 px-2.5 py-1.5 text-sm font-medium text-red-600 ring-1 ring-inset ring-red-500/10">
+                            <FireIcon className='h-4 mr-2 text-red' /> <span>{modalClass.intensity} Intensity</span>
+                          </div>
+                        }
                       </div>
+
+
                     </div>
-                  </div>
+
+                    <div className="pt-3 text-lg text-gray-500">
+                      {modalClass.description}
+                    </div>
+
+                  </div>}
 
                 </Dialog.Panel>
               </Transition.Child>
             </div>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition.Root >
     </>
 
   )
