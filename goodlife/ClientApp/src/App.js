@@ -41,7 +41,7 @@ const Page = ({ page, transitionPage }) => {
             />
         )
     }
-    if (page === 5) return <Results setPage={transitionPage} />
+    if (page === 5) return <Results setPage={transitionPage} quizData={quizData} />
     return <div>wrong page, shouldnt be here. please reload</div>
 }
 

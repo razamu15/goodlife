@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';

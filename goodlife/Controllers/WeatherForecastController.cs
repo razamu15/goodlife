@@ -15,13 +15,24 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
+    //[HttpGet]
+    //public async Task<IEnumerable<Category>?> Get() {
+    //    var uri = "https://gldev-practicalapi.azurewebsites.net/api/FitnessClass/GetCategories";
+
+    //    using HttpResponseMessage response = await client.GetAsync(uri);
+    //    response.EnsureSuccessStatusCode();
+    //    var responseBody = await response.Content.ReadFromJsonAsync<IEnumerable<Category>>();
+    //    return responseBody;
+    //}
+
     [HttpGet]
-    public async Task<IEnumerable<Category>?> Get() {
-        var uri = "https://gldev-practicalapi.azurewebsites.net/api/FitnessClass/GetCategories";
+    public async Task<IEnumerable<Class>?> Get()
+    {
+        var uri = "https://gldev-practicalapi.azurewebsites.net/api/FitnessClass/Get";
 
         using HttpResponseMessage response = await client.GetAsync(uri);
         response.EnsureSuccessStatusCode();
-        var responseBody = await response.Content.ReadFromJsonAsync<IEnumerable<Category>>();
+        var responseBody = await response.Content.ReadFromJsonAsync<IEnumerable<Class>>();
         return responseBody;
     }
 }
