@@ -38,24 +38,24 @@ export function Categories() {
 
     return (
         <div className='h-96 w-96 ring-1 ring-inset ring-gray-500'>
-            {state.forecasts.map(forecast =>
-                <tr key={forecast.date}>
-                    <td>{forecast.date}</td>
-                    <td>{forecast.temperatureC}</td>
-                    <td>{forecast.temperatureF}</td>
-                    <td>{forecast.summary}</td>
-                </tr>
-            )}
+            {/*{state.forecasts.map(forecast =>*/}
+            {/*    <tr key={forecast.date}>*/}
+            {/*        <td>{forecast.date}</td>*/}
+            {/*        <td>{forecast.temperatureC}</td>*/}
+            {/*        <td>{forecast.temperatureF}</td>*/}
+            {/*        <td>{forecast.summary}</td>*/}
+            {/*    </tr>*/}
+            {/*)}*/}
 
-            {/*{categories.map((cat) => {*/}
-            {/*    return <>*/}
-            {/*        <span>{cat.id}</span>*/}
-            {/*        <span>{cat.name}</span>*/}
+            {state.forecasts.map((cat) => {
+                return <>
+                    <span>{cat.id}</span>
+                    <span>{cat.name}</span>
 
 
 
-            {/*    </>*/}
-            {/*})}*/}
+                </>
+            })}
         </div>
     )
 }
