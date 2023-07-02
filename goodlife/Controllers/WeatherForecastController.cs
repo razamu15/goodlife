@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace goodlife.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]/[action]")]
 public class WeatherForecastController : ControllerBase
 {
     static readonly HttpClient client = new HttpClient();
@@ -15,18 +15,19 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    //[HttpGet]
-    //public async Task<IEnumerable<Category>?> Get() {
-    //    var uri = "https://gldev-practicalapi.azurewebsites.net/api/FitnessClass/GetCategories";
+    [HttpGet]
+    public async Task<IEnumerable<Category>?> Categories()
+    {
+        var uri = "https://gldev-practicalapi.azurewebsites.net/api/FitnessClass/GetCategories";
 
-    //    using HttpResponseMessage response = await client.GetAsync(uri);
-    //    response.EnsureSuccessStatusCode();
-    //    var responseBody = await response.Content.ReadFromJsonAsync<IEnumerable<Category>>();
-    //    return responseBody;
-    //}
+        using HttpResponseMessage response = await client.GetAsync(uri);
+        response.EnsureSuccessStatusCode();
+        var responseBody = await response.Content.ReadFromJsonAsync<IEnumerable<Category>>();
+        return responseBody;
+    }
 
     [HttpGet]
-    public async Task<IEnumerable<Class>?> Get()
+    public async Task<IEnumerable<Class>?> Classes()
     {
         var uri = "https://gldev-practicalapi.azurewebsites.net/api/FitnessClass/Get";
 

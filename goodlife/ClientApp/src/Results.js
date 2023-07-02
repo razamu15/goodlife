@@ -21,7 +21,7 @@ export function Results({ setPage, quizData }) {
   const [data, setData] = useState({ classes: [], loading: true })
 
   const populateWeatherData = async () => {
-    const response = await fetch('weatherforecast');
+    const response = await fetch('weatherforecast/classes');
     const data = await response.json();
     console.log(data)
     setData({ classes: data, loading: false });
