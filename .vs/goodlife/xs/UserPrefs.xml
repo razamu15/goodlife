@@ -1,20 +1,22 @@
 ﻿<Properties StartupConfiguration="{8D2B57D1-73F6-4BD9-9226-5441F04EE5E4}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.goodlife PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="goodlife/goodlife.csproj">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="goodlife/ClientApp/src/App.js">
     <Files>
-      <File FileName="goodlife/goodlife.csproj" Line="29" Column="29" />
+      <File FileName="goodlife/goodlife.csproj" Line="53" Column="1" />
       <File FileName="goodlife/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
-      <File FileName="goodlife/ClientApp/src/App.js" Line="1" Column="1" />
+      <File FileName="goodlife/ClientApp/src/custom.css" Line="4" Column="21" />
+      <File FileName="goodlife/ClientApp/src/Landing.js" Line="19" Column="53" />
+      <File FileName="goodlife/ClientApp/src/EmptyJSFile.js" Line="17" Column="1" />
+      <File FileName="goodlife/ClientApp/src/App.js" Line="24" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="goodlife" expanded="True">
-            <Node name="goodlife" expanded="True">
-              <Node name="ClientApp" expanded="True">
+          <Node name="goodlife">
+            <Node name="goodlife">
+              <Node name="ClientApp">
+                <Node name="public" expanded="True" />
                 <Node name="src" expanded="True">
                   <Node name="App.js" selected="True" />
                 </Node>
@@ -26,7 +28,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

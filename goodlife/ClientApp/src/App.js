@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
+import { useState } from 'react'
+import { Categories } from './Categories'
+import Landing from './Landing'
+import { Transition } from '@headlessui/react'
+import { useTimeoutFn } from 'react-use'
 import './custom.css';
 
 //export default class App extends Component {
@@ -22,22 +23,23 @@ import './custom.css';
 //}
 
 function App() {
-    //const [page, setPage] = useState(Pages.Landing)
-    //const [nextPage, setNextPage] = useState(Pages.Landing)
+    const [page, setPage] = useState(1)
+    const [nextPage, setNextPage] = useState(1)
 
-    //let [isShowing, setIsShowing] = useState(true)
-    //let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500)
+    let [isShowing, setIsShowing] = useState(true)
+    let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500)
 
 
-    //const transitionPage = (nextPage: Pages) => {
-    //    setIsShowing(false)
-    //    setNextPage(nextPage)
-    //    resetIsShowing()
-    //}
+    const transitionPage = (nextPage) => {
+        setIsShowing(false)
+        setNextPage(nextPage)
+        resetIsShowing()
+    }
 
-    //let comp
-    //if (page === Pages.Landing) comp = <Landing setPage={transitionPage} />
-    //if (page === Pages.Q1) comp = <Categories />
+    let comp
+    if (page === 1) comp = <Landing setPage={transitionPage} />
+    if (page === 2) comp = <Categories />
+    //let comp = null
 
 
     return (
@@ -64,18 +66,18 @@ function App() {
 
 
 
-            {/*<Transition*/}
-            {/*    show={isShowing}*/}
-            {/*    enter="transition-all ease-out duration-[400ms]"*/}
-            {/*    enterFrom="opacity-0 translate-x-full "*/}
-            {/*    enterTo="opacity-100 translate-x-0 "*/}
-            {/*    leave="transition-all ease-out duration-300"*/}
-            {/*    leaveFrom="opacity-100 translate-x-0 "*/}
-            {/*    leaveTo="opacity-0 -translate-x-full"*/}
-            {/*    afterLeave={() => setPage(nextPage)}*/}
-            {/*>*/}
-            {/*    {comp}*/}
-            {/*</Transition>*/}
+            <Transition
+                show={isShowing}
+                enter="transition-all ease-out duration-[400ms]"
+                enterFrom="opacity-0 translate-x-full "
+                enterTo="opacity-100 translate-x-0 "
+                leave="transition-all ease-out duration-300"
+                leaveFrom="opacity-100 translate-x-0 "
+                leaveTo="opacity-0 -translate-x-full"
+                afterLeave={() => setPage(nextPage)}
+            >
+                {comp}
+            </Transition>
 
             <div
                 className="absolute inset-x-0 bottom-0 -z-10 transform-gpu overflow-hidden blur-3xl "
