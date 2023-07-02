@@ -15,8 +15,7 @@ const getEfforLabel = (value) => {
   return EFFORT_LABEL[value]
 }
 
-export function Effort({ setPage }) {
-  const [value, setValue] = useState(3);
+export function Effort({ setPage, value, setValue }) {
 
   const handleChange = (event, newValue) => {
     if (typeof newValue === 'number') {
@@ -26,7 +25,7 @@ export function Effort({ setPage }) {
 
 
   return (
-    <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg'>
+    <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg bg-white'>
       <h1 className='text-3xl font-semibold tracking-tight mt-3 pb-3'>Pick Your Desired Effort Level</h1>
 
       <div className='font-medium text-gray-500'>

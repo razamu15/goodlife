@@ -10,13 +10,37 @@ import { UserInfo } from './UserInfo'
 import { Results } from './Results'
 
 const Page = ({ page, transitionPage }) => {
-    const [quizData, setQuizData] = useState({ categories: [], effort: 3, equipment: false})
+    const [quizData, setQuizData] = useState({ categories: [], effort: 3, equipment: false })
 
     if (page === 0) return <Landing setPage={transitionPage} />
     if (page === 1) return <UserInfo setPage={transitionPage} />
-    if (page === 2) return <Categories setPage={transitionPage}  />
-    if (page === 3) return <Effort setPage={transitionPage} />
-    if (page === 4) return <Equipment setPage={transitionPage} />
+    if (page === 2) {
+        return (
+            <Categories
+                setPage={transitionPage}
+                selected={quizData.categories}
+                setSelected={(newCategories) => setQuizData({ ...quizData, categories: newCategories })}
+            />
+        )
+    }
+    if (page === 3) {
+        return (
+            <Effort
+                setPage={transitionPage}
+                value={quizData.effort}
+                setValue={(newEffort) => setQuizData({ ...quizData, effort: newEffort })}
+            />
+        )
+    }
+    if (page === 4) {
+        return (
+            <Equipment
+                setPage={transitionPage}
+                enabled={quizData.equipment}
+                setEnabled={(equip) => setQuizData({ ...quizData, equipment: equip })}
+            />
+        )
+    }
     if (page === 5) return <Results setPage={transitionPage} />
     return <div>wrong page, shouldnt be here. please reload</div>
 }

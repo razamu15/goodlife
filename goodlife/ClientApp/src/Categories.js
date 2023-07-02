@@ -16,9 +16,8 @@ const images = {
     Dance: 'https://www.goodlifefitness.com/content/experience-fragments/goodlife/class_category/class-category/dance/_jcr_content/root/responsivegrid/responsivegrid_322550577/image.coreimg.90.1440.png/1591302799724/classcategorypage-cardio-imagebreak.png',
 }
 
-export function Categories({setPage}) {
+export function Categories({setPage, selected, setSelected}) {
     const [data, setData] = useState({ categories: [], loading: true })
-    const [selected, setSelected] = useState([])
     
     const populateWeatherData = async () => {
         const response = await fetch('weatherforecast');
@@ -40,7 +39,7 @@ export function Categories({setPage}) {
 
 
     return (
-        <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg'>
+        <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg bg-white'>
             <h1 className='text-3xl font-semibold tracking-tight mt-3 pb-3'>Select All Categories that Interest You</h1>
 
             {data.loading

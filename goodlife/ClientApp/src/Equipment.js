@@ -6,19 +6,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function Equipment({ setPage }) {
-  const [enabled, setEnabled] = useState(false);
+export function Equipment({ setPage, enabled, setEnabled }) {
 
   return (
-    <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg'>
+    <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg bg-white'>
       <h1 className='text-3xl font-semibold tracking-tight mt-3 pb-3'>Include classes that require equipment?</h1>
 
-      {/* <div className='font-medium text-gray-500'>
-        Selected Level:
-        <span className="ml-3 mt-3 inline-flex items-center gap-x-1.5 rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
-          yes
-        </span>
-      </div> */}
       <div className="my-4 flex">
         <span className='font-medium text-gray-500 w-auto pr-5 text-center'><span className='text-black font-semibold text-lg'>No,</span> Dont Include Classes that Require Equipment</span>
 
