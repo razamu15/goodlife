@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { Switch } from '@headlessui/react'
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -22,7 +20,7 @@ export function Equipment({ setPage }) {
         </span>
       </div> */}
       <div className="my-4 flex">
-        <span className='font-medium text-gray-500 w-auto pr-5 text-center'>No, Dont Include Classes that Require Equipment</span>
+        <span className='font-medium text-gray-500 w-auto pr-5 text-center'><span className='text-black font-semibold text-lg'>No,</span> Dont Include Classes that Require Equipment</span>
 
         <Switch
           checked={enabled}
@@ -72,12 +70,12 @@ export function Equipment({ setPage }) {
           </span>
 
         </Switch>
-        <span className='w-auto font-medium text-gray-500 pl-5 text-center'>Yes, Include Classes that Require Equipment</span>
+        <span className='w-auto font-medium text-gray-500 pl-5 text-center'><span className='text-black font-semibold text-lg'>Yes,</span> Include Classes that Require Equipment</span>
       </div>
 
 
       <div className='w-full flex justify-end pt-3'>
-        <button onClick={() => setPage(4)}
+        <button onClick={() => setPage(5)}
           className="rounded-full flex items-center bg-red-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" >
           Next <ArrowRightIcon className='h-5 ml-3' />
         </button>

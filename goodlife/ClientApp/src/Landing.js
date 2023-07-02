@@ -16,7 +16,7 @@ export default function Landing({ setPage }) {
                     This quiz comprises of a few sinmple questions and is designed to help you determine GoodLife classes to participate in in order to achieve your fitness goals
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
-                    <button onClick={() => setPage(2)}
+                    <button onClick={() => setPage(1)}
                         className="rounded-full flex items-center bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" >
                         Get started <ArrowRightIcon className='h-5 ml-3' />
                     </button>

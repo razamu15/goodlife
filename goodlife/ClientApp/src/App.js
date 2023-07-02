@@ -6,9 +6,10 @@ import { Transition } from '@headlessui/react'
 import { useTimeoutFn } from 'react-use'
 import './custom.css';
 import { Equipment } from './Equipment'
+import { UserInfo } from './UserInfo'
 
 function App() {
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(0)
     const [nextPage, setNextPage] = useState(1)
 
     let [isShowing, setIsShowing] = useState(true)
@@ -22,7 +23,8 @@ function App() {
     }
 
     let comp
-    if (page === 1) comp = <Landing setPage={transitionPage} />
+    if (page === 0) comp = <Landing setPage={transitionPage} />
+    if (page === 1) comp = <UserInfo setPage={transitionPage} />
     if (page === 2) comp = <Categories setPage={transitionPage}  />
     if (page === 3) comp = <Effort setPage={transitionPage}  />
     if (page === 4) comp = <Equipment setPage={transitionPage}  />
