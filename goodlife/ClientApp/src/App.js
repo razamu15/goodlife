@@ -1,26 +1,10 @@
 import { useState } from 'react'
 import { Categories } from './Categories'
+import { Effort } from './Effort'
 import Landing from './Landing'
 import { Transition } from '@headlessui/react'
 import { useTimeoutFn } from 'react-use'
 import './custom.css';
-
-//export default class App extends Component {
-//  static displayName = App.name;
-
-//  render() {
-//    return (
-//      <Layout>
-//        <Routes>
-//          {AppRoutes.map((route, index) => {
-//            const { element, ...rest } = route;
-//            return <Route key={index} {...rest} element={element} />;
-//          })}
-//        </Routes>
-//      </Layout>
-//    );
-//  }
-//}
 
 function App() {
     const [page, setPage] = useState(1)
@@ -38,7 +22,8 @@ function App() {
 
     let comp
     if (page === 1) comp = <Landing setPage={transitionPage} />
-    if (page === 2) comp = <Categories />
+    if (page === 2) comp = <Categories setPage={transitionPage}  />
+    if (page === 3) comp = <Effort setPage={transitionPage}  />
     //let comp = null
 
 
