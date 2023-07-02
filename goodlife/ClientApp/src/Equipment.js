@@ -15,7 +15,7 @@ const getEfforLabel = (value) => {
   return EFFORT_LABEL[value]
 }
 
-export function Effort({ setPage }) {
+export function Equipment({ setPage }) {
   const [value, setValue] = useState(3);
 
   const handleChange = (event, newValue) => {
@@ -27,7 +27,7 @@ export function Effort({ setPage }) {
 
   return (
     <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg'>
-      <h1 className='text-3xl font-semibold tracking-tight mt-3 pb-3'>Pick Your Desired Effort Level</h1>
+      <h1 className='text-3xl font-semibold tracking-tight mt-3 pb-3'>Include classes that require equipment?</h1>
 
       <div className='font-medium text-gray-500'>
         Selected Level:
