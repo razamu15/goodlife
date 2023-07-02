@@ -7,13 +7,13 @@ function classNames(...classes) {
 }
 
 const images = {
-    Yoga: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    Aqua: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    Strength: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    Tone: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    Cycling: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    Cardio: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    Dance: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    Yoga: 'https://www.goodlifefitness.com/content/experience-fragments/goodlife/class_category/class-category/mind-body/_jcr_content/root/responsivegrid/responsivegrid_copy/responsivegrid_14476/image.coreimg.90.1440.jpeg/1591364300838/img-class-cat-flexibility.jpeg',
+    Aqua: 'https://images.squarespace-cdn.com/content/v1/5639488ae4b0703e0d84a1a2/1599528713654-YS4VF3KW6K4X4P67VGH7/Goodlife-25.jpg?format=1500w',
+    Strength: 'https://www.goodlifefitness.com/content/experience-fragments/goodlife/classes/class-details-layout/58/_jcr_content/root/responsivegrid/responsivegrid/image.coreimg.90.1024.jpeg/1673038194419/group-fitness-photoshoot-2019-0b2a0966-resize-2.jpeg',
+    Tone: 'https://images.ctfassets.net/zqfcw6ceqcqc/4mfNF3uZW78IUNaNglEhDO/21e0237c81d78f446b9a5aab4c1816eb/WEB0045_New_Website_-_Images_Tone_1800x580.jpg?w=1800&h=580&fl=progressive&q=90&fm=jpg&fit=fill&f=center',
+    Cycling: 'https://www.goodlifefitness.com/content/experience-fragments/goodlife/classes/class-details-layout/89/_jcr_content/root/responsivegrid/responsivegrid/image.coreimg.90.1024.jpeg/1608586475807/les-mills-104.jpeg',
+    Cardio: 'https://blog.goodlifefitness.com/media/1559/hub-treadmill.jpg',
+    Dance: 'https://www.goodlifefitness.com/content/experience-fragments/goodlife/class_category/class-category/dance/_jcr_content/root/responsivegrid/responsivegrid_322550577/image.coreimg.90.1440.png/1591302799724/classcategorypage-cardio-imagebreak.png',
 }
 
 export function Categories({setPage}) {
@@ -46,20 +46,20 @@ export function Categories({setPage}) {
             {data.loading
                 ? <Loading />
                 :
-                <div className="my-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                <div className="my-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
 
                     {data.categories.map((cat) => {
                         return (
                             <div
                                 key={cat.id}
-                                className={classNames("relative flex items-center space-x-3 rounded-lg border border-gray-300 px-3 py-3 shadow-sm hover:border-gray-400",
-                                    selected.includes(cat.id) ? "bg-red-500 text-white" : "bg-white text-black", "transition-all duration-200 ease")}
+                                className={classNames("relative flex items-center rounded-lg border border-gray-300 shadow-sm hover:border-gray-400",
+                                    selected.includes(cat.id) ? "bg-red-500 text-white scale-95" : "bg-white text-black scale-100", "transition-all duration-200 ease overflow-clip")}
                                 onClick={toggleCategory(cat.id)}
                             >
                                 <div className="flex-shrink-0">
-                                    <img className="h-10 w-10 rounded-full" src={images[cat.name]} alt="" />
+                                    <img className="h-20 w-28" src={images[cat.name]} alt="" />
                                 </div>
-                                <div className="min-w-0 flex-1">
+                                <div className="min-w-0 flex-1 px-3 py-3">
                                     <button className="focus:outline-none">
                                         <span className="absolute inset-0" aria-hidden="true" />
                                         <p className="text-base font-medium">{cat.name}</p>

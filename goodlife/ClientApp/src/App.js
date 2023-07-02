@@ -7,6 +7,7 @@ import { useTimeoutFn } from 'react-use'
 import './custom.css';
 import { Equipment } from './Equipment'
 import { UserInfo } from './UserInfo'
+import { Results } from './Results'
 
 function App() {
     const [page, setPage] = useState(0)
@@ -28,6 +29,7 @@ function App() {
     if (page === 2) comp = <Categories setPage={transitionPage}  />
     if (page === 3) comp = <Effort setPage={transitionPage}  />
     if (page === 4) comp = <Equipment setPage={transitionPage}  />
+    if (page === 5) comp = <Results setPage={transitionPage}  />
     //let comp = null
 
 

@@ -142,7 +142,7 @@ export function UserInfo({ setPage }) {
 
 
       <div className='w-full flex justify-end mt-4'>
-        <button onClick={() => { console.log(form) }}
+        <button onClick={() => { console.log(form); setPage(2) }}
           className="rounded-full flex items-center bg-red-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" >
           Next <ArrowRightIcon className='h-5 ml-3' />
         </button>
@@ -151,4 +151,4 @@ export function UserInfo({ setPage }) {
     </div>
   )
 }
-// setPage(2)
+
