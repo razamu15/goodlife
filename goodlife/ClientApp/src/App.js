@@ -44,7 +44,7 @@ function App() {
 
     return (
 
-        <div className="bg-white h-screen w-scree relative isolate flex justify-center items-center">
+        <div className="bg-white h-screen w-screen relative isolate flex justify-center items-center">
 
 
 
