@@ -9,8 +9,7 @@ import { Equipment } from './Equipment'
 import { UserInfo } from './UserInfo'
 import { Results } from './Results'
 
-const Page = ({ page, transitionPage }) => {
-    const [quizData, setQuizData] = useState({ categories: [], effort: 3, equipment: false })
+const Page = ({ page, transitionPage, quizData, setQuizData }) => {
 
     if (page === 0) return <Landing setPage={transitionPage} />
     if (page === 1) return <UserInfo setPage={transitionPage} />
@@ -46,6 +45,7 @@ const Page = ({ page, transitionPage }) => {
 }
 
 function App() {
+    const [quizData, setQuizData] = useState({ categories: [], effort: 3, equipment: false })
     const [page, setPage] = useState(0)
     const [nextPage, setNextPage] = useState(1)
     let [isShowing, setIsShowing] = useState(true)
@@ -85,7 +85,7 @@ function App() {
                 leaveTo="opacity-0 -translate-x-full"
                 afterLeave={() => setPage(nextPage)}
             >
-                <Page page={page} transitionPage={transitionPage} />
+                <Page page={page} transitionPage={transitionPage} quizData={quizData} setQuizData={setQuizData} />
             </Transition>
 
             <div className="absolute inset-x-0 bottom-0 -z-10 transform-gpu overflow-hidden blur-3xl " aria-hidden="true" >

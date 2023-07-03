@@ -4,6 +4,14 @@ import {FireIcon } from '@heroicons/react/24/solid'
 import { Loading } from './Loading';
 import { Dialog, Transition } from '@headlessui/react'
 
+const EFFORT_LABEL = {
+  1: 'Low',
+  2: 'Low/Medium',
+  3: 'Medium',
+  4: 'Medium/High',
+  5: 'High'
+}
+
 const DumbellIcon = () => {
   return (
     <svg className='h-4 mr-2 text-red-500' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512" fill='currentColor'>
@@ -23,8 +31,12 @@ export function Results({ setPage, quizData }) {
   const populateWeatherData = async () => {
     const response = await fetch('goodlife/classes');
     const data = await response.json();
-    console.log(data)
-    setData({ classes: data, loading: false });
+
+    const equipFilter = data.filter((c) => c.requiresEquipment === quizData.equipment)    
+    const catFilter = equipFilter.filter((c) => c.categoryID.filter(value => quizData.categories.includes(value)).length >= 1)
+    const effFilter = catFilter.filter((c) => c.intensity === EFFORT_LABEL[quizData.effort])
+
+    setData({ classes: effFilter, loading: false });
   }
 
   useEffect(() => {
