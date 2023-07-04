@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from 'react'
 import { ArrowPathIcon, ArrowRightIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import {FireIcon } from '@heroicons/react/24/solid'
+import {FireIcon, FaceFrownIcon } from '@heroicons/react/24/solid'
 import { Loading } from './Loading';
 import { Dialog, Transition } from '@headlessui/react'
 
@@ -32,11 +32,11 @@ export function Results({ setPage, quizData }) {
     const response = await fetch('goodlife/classes');
     const data = await response.json();
 
-    const equipFilter = data.filter((c) => c.requiresEquipment === quizData.equipment)    
-    const catFilter = equipFilter.filter((c) => c.categoryID.filter(value => quizData.categories.includes(value)).length >= 1)
-    const effFilter = catFilter.filter((c) => c.intensity === EFFORT_LABEL[quizData.effort])
+    const equipmentFilter = data.filter((c) => c.requiresEquipment ? quizData.equipment : true)    
+    const categoryFilter = equipmentFilter.filter((c) => c.categoryID.filter(value => quizData.categories.includes(value)).length >= 1)
+    const effortFilter = categoryFilter.filter((c) => c.intensity === EFFORT_LABEL[quizData.effort])
 
-    setData({ classes: effFilter, loading: false });
+    setData({ classes: effortFilter, loading: false });
   }
 
   useEffect(() => {
@@ -45,13 +45,13 @@ export function Results({ setPage, quizData }) {
 
   return (
     <>
-      <div className='w-screen max-w-2xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg bg-white'>
+      <div className='w-screen max-w-3xl p-10 ring-1 ring-inset ring-gray-400 rounded-lg bg-white'>
         <h1 className='text-3xl font-semibold tracking-tight mt-3 pb-3'>{data.loading ? 'Compiling your results' : 'Recommended Goodlife Classes'}</h1>
 
         {data.loading ? <Loading />
           : <ul role="list" className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 max-h-96 overflow-auto">
             {data.classes.map((fitnessClass) => (
-              <li key={fitnessClass.name} className="col-span-1 flex rounded-md shadow-sm cursor-pointer" onClick={() => setModalClass(fitnessClass)}>
+              <li key={fitnessClass.name} className="col-span-1 flex rounded-md shadow-sm cursor-pointer transition-all duration-200 hover:scale-95 scale-100" onClick={() => setModalClass(fitnessClass)}>
                 <div className='flex w-20 flex-shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white bg-red-500' >
                   {fitnessClass.classAbbr}
                 </div>
@@ -66,6 +66,12 @@ export function Results({ setPage, quizData }) {
                 </div>
               </li>
             ))}
+            { data.classes.length === 0 && 
+              <div className=' text-gray-500 flex gap-4 col-span-full items-center'>
+                <FaceFrownIcon className='h-20 text-red-500' />
+                <span>No classes found matching the given criteria. <br /> Please edit the options and try again to find one that fits you!</span>
+              </div> 
+            }
           </ul>
         }
 

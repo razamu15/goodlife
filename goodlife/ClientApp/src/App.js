@@ -55,6 +55,9 @@ function App() {
         setIsShowing(false)
         setNextPage(nextPage)
         resetIsShowing()
+        if (nextPage == 0) {
+            setQuizData({ categories: [], effort: 3, equipment: false })
+        }
     }
 
 
