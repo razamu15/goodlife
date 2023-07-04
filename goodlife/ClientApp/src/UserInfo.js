@@ -1,13 +1,42 @@
 import { useState, useEffect } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export function UserInfo({ setPage }) {
-  const [form, setForm] = useState({ name: '', email: '', address: '', city: '', region: '', postal_code: '' });
+  const [form, setForm] = useState({ name: '', email: '', address: '', city: '', region: '', postal_code: '', phone: '' });
+  const [errors, setErrors] = useState({ name: '', email: '', phone: '' });
 
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value })
   };
+
+  const handleSubmit = (event) => {
+
+    let nameError = ''
+    if (form.name === '') {
+      nameError = 'Name is required'
+    }
+
+    let emailError = ''
+    if (form.email === '') {
+      emailError = 'Email address given is not valid'
+    }
+
+    let phoneError = ''
+    if (form.phone === '') {
+      phoneError = 'Phone number giver is not valid'
+    }
+
+    if (nameError === '' && emailError === '' && phoneError === '') {
+      setPage(2)
+    } else {
+      setErrors({ name: nameError, email: emailError, phone: phoneError })
+    }
+    
+  }
 
 
   return (
@@ -33,8 +62,10 @@ export function UserInfo({ setPage }) {
               autoComplete="name"
               value={form.name}
               onChange={handleChange}
-              className="block w-full rounded-md py-1.5 px-1.5 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+              className={classNames("block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900  ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", 
+                errors.name === '' ? 'ring-gray-300' : 'ring-red-300')}
             />
+            { errors.name !== '' && <span className='text-xs text-red-400'>{errors.name}</span>}
           </div>
         </div>
 
@@ -50,39 +81,64 @@ export function UserInfo({ setPage }) {
               autoComplete="email"
               value={form.email}
               onChange={handleChange}
-              className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className={classNames("block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900  ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", 
+                errors.email === '' ? 'ring-gray-300' : 'ring-red-300')}
             />
+            { errors.email !== '' && <span className='text-xs text-red-400'>{errors.email}</span>}
           </div>
         </div>
 
-        <div className='col-span-full'>
-          <label htmlFor="phone-number" className="block text-sm font-medium leading-6 text-gray-900">
-            Street Address
+        <div className="sm:col-span-3">
+          <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
+            Phone
           </label>
-          <div className="relative mt-2 rounded-md ">
-            <div className="absolute inset-y-0 left-0 flex items-center">
-              <label htmlFor="country" className="sr-only">
-                Country
-              </label>
-              <select
-                id="country"
-                name="country"
-                autoComplete="country"
-                className="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-2 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-              >
-                <option>🇨🇦 CA</option>
-                <option>🇺🇸 US</option>
-                <option>🇲🇽 MX</option>
-              </select>
-            </div>
+          <div className="mt-2">
             <input
               type="text"
-              autoComplete="street-address"
+              name="phone"
+              id="phone"
+              autoComplete="phone"
+              value={form.phone}
+              placeholder='555-555-5555'
+              onChange={handleChange}
+              className={classNames("block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900  ring-1 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", 
+                errors.phone === '' ? 'ring-gray-300' : 'ring-red-300')}
+            />
+            { errors.phone !== '' && <span className='text-xs text-red-400'>{errors.phone}</span>}
+          </div>
+        </div>
+
+        <div className="sm:col-span-3">
+          <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">
+            Country
+          </label>
+          <div className="mt-2">
+            <select
+              id="country"
+              name="country"
+              autoComplete="country-name"
+              className="block w-full rounded-md border-0 px-1.5 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+            >
+              <option>🇨🇦 Canada</option>
+              <option>🇺🇸 United States</option>
+              <option>🇲🇽 Mexico</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="col-span-full">
+          <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+            Street address
+          </label>
+          <div className="mt-2">
+            <input
+              type="text"
               name="address"
-              id="address"
+              id="street-address"
+              autoComplete="street-address"
               value={form.address}
               onChange={handleChange}
-              className="block w-full rounded-md border-0 py-1.5 px-1.5 pl-24 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -142,7 +198,7 @@ export function UserInfo({ setPage }) {
 
 
       <div className='w-full flex justify-end mt-4'>
-        <button onClick={() => { console.log(form); setPage(2) }}
+        <button onClick={handleSubmit}
           className="rounded-full flex items-center bg-red-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" >
           Next <ArrowRightIcon className='h-5 ml-3' />
         </button>
