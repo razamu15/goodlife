@@ -22,12 +22,21 @@ export function UserInfo({ setPage }) {
 
     let emailError = ''
     if (form.email === '') {
-      emailError = 'Email address given is not valid'
+      emailError = 'Email address is required'
+    } else {
+      if (!!!String(form.email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        emailError = 'Email address given is not valid'
+      }
     }
 
     let phoneError = ''
     if (form.phone === '') {
-      phoneError = 'Phone number giver is not valid'
+      phoneError = 'Phone number is required'
+    } else {
+      let phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      if(!!!String(form.phone).match(phoneno)) {
+        phoneError = 'Phone number given is not valid'
+      }
     }
 
     if (nameError === '' && emailError === '' && phoneError === '') {
